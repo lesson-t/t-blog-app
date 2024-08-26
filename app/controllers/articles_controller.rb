@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
+    before_action :set_article, only: [:show, :edit, :update]
+
     def index
         # render 'home/index'
         @articles = Article.all
     end
 
     def show
-        @article = Article.find(params[:id])
+        # set_article で @article = Article.find(params[:id])　を実行している
     end
 
     def new
@@ -23,11 +25,11 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-        @article = Article.find(params[:id])
+        # set_article で @article = Article.find(params[:id])　を実行している
     end
 
     def update
-        @article = Article.find(params[:id])
+        # set_article で @article = Article.find(params[:id])　を実行している
         if @article.update(article_params)
             redirect_to article_path(@article), notice: '更新できました'
         else
@@ -45,5 +47,9 @@ class ArticlesController < ApplicationController
     private
     def article_params
         params.require(:article).permit(:title, :content)
+    end
+
+    def set_article
+        @article = Article.find(params[:id]) #@インスタンス変数にすることでクラス内で取得できるようにしている
     end
 end
