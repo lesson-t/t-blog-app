@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
     def show
         # set_article で @article = Article.find(params[:id])　を実行している
+        @comments = @article.comments
     end
 
     def new
