@@ -33,7 +33,8 @@ class ProfilesController < ApplicationController
             :introduction,
             :gender,
             :birthday,
-            :subscribe
+            :subscribe,
+            :avatar
         )
     end
 end
