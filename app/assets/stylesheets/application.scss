@@ -7,7 +7,9 @@
 @import "form";
 @import "flash";
 @import "common";
-@import 'profile';
+@import "profile";
+@import "actiontext";
+@import "trix/dist/trix.css";
 
 html {
   word-spacing: 1px;
