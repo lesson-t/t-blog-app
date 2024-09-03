@@ -1,8 +1,1 @@
-.container
-  = render 'tabs'
-  - @articles.each do |article|
-    = render 'commons/article', article: article
-    / テンプレートのarticle_path(article)のarticle =  @articles.each do |article| の article の意味
-  = link_to new_article_path do
-    .float_btn
-      %i.fa.fa-plus
+= render 'commons/articles', articles: @articles
