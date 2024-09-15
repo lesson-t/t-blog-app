@@ -20,6 +20,16 @@ document.addEventListener('turbolinks:load', () => {
             const hasLiked = response.data.hasLiked
             handleHeartDisplay(hasLiked)
         })
+
+    axios.get(`/articles/${articleId}/comments`)
+        .then((response) => {
+            const comments = response.data
+            comments.forEach((comment) => {
+                $('.comments-container').append(
+                    `<div class="atricle_comment"><p>${comment.content}</p></div>`
+                ) 
+            });
+        })
     
     $('.inactive-heart').on('click', () => {
         axios.post(`/articles/${articleId}/like`)
