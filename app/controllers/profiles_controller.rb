@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
     def show
         @profile = current_user.profile
+        @user = current_user
     end
 
     def edit
@@ -21,7 +22,7 @@ class ProfilesController < ApplicationController
         if @profile.save
             redirect_to profile_path, notice: 'プロフィールを更新'
         else
-            lash.now[:error] = '更新できませんでした'
+            flash.now[:error] = '更新できませんでした'
             render :edit
         end
     end
