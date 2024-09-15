@@ -15,20 +15,26 @@ const handleHeartDisplay = (hasLiked) => {
 document.addEventListener('turbolinks:load', () => {
     const dataset = $('#article-show').data()
     const articleId = dataset.articleId
+
+    axios.get(`/articles/${articleId}/comments`)
+    .then((response) => {
+        const comments = response.data
+        comments.forEach((comment) => {
+            $('.comments-container').append(
+                `<div class="atricle_comment"><p>${comment.content}</p></div>`
+            ) 
+        });
+    })
+
+    $('.show-comment-form').on('click', () => {
+        $('.show-comment-form').addClass('hidden')
+        $('.comment-text-area').removeClass('hidden')
+    })
+
     axios.get(`/articles/${articleId}/like`)
         .then((response) => {
             const hasLiked = response.data.hasLiked
             handleHeartDisplay(hasLiked)
-        })
-
-    axios.get(`/articles/${articleId}/comments`)
-        .then((response) => {
-            const comments = response.data
-            comments.forEach((comment) => {
-                $('.comments-container').append(
-                    `<div class="atricle_comment"><p>${comment.content}</p></div>`
-                ) 
-            });
         })
     
     $('.inactive-heart').on('click', () => {
