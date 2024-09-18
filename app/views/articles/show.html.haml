@@ -25,8 +25,8 @@
       = image_tag 'heart.svg'
 
 .article
-  %h2 コメント一覧
-  .comments-container
+  %h2= I18n.t('articles.comment_list')
+  .comments-container.article_comment
 
 .container
   .btn-secondary.show-comment-form
