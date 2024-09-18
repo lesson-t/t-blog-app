@@ -1,5 +1,5 @@
 class NotificationFromAdminJob < ApplicationJob
-    queue_as :default_locale
+    queue_as :defaul
     
     def perform(msg)
         User.all.each do |user|
