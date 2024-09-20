@@ -1,4 +1,4 @@
-class Apps::ProfilesController < Apps:ApplicationController
+class Apps::ProfilesController < Apps::ApplicationController
 
     def show
         @profile = current_user.profile
